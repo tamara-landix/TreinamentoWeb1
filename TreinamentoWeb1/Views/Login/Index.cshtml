@@ -1,0 +1,79 @@
+﻿@model TreinamentoWeb1.Models.DataContract.Login
+
+@{
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Título da página -->
+    <title>Nono exercício!!</title>
+
+    <!-- Bootstrap -->
+    <link href="../Content/bootstrap.min.css" rel="stylesheet">
+    <link href="../Content/styles.css" rel="stylesheet">
+    <link href="../Content/login.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Inicia corpo -->
+    <!-- Div Topo -->
+    <div class="container">
+        <div class="row">
+            <div id="topo" class="col-md-6 col-md-offset-3">
+                <!-- Divide o topo em 2 colunas -->
+                <!-- Primeira coluna: logo Landix -->
+                <div class="col-md-6 text-right">
+                    <img src="../Content/images/logo.png" />
+                </div>
+
+                <!-- Segunda coluna: Título-->
+                <div class="col-md-6 text-left">
+                    <h1>Nono exercício!!</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Login", "Login"))
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            @Html.LabelFor(model => model.Username)
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "has-error" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password)
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "has-error" })
+        </div>
+
+        <br>
+
+        <!-- id="loginButton" -->
+        <button id="entrar" type="submit" class="btn btn-success pull-right">@TreinamentoWeb1.Resources.Strings.enter</button>
+    }
+
+    <br><br><br>
+
+    <!-- <div id="validation-alert" class="hide alert alert-danger" role="alert"> -->
+        <strong>@Html.ValidationSummary(true,string.Empty)</strong>
+    <!--</div>-->
+
+    <!-- Scripts -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/login.js"></script>
+</body>
+
+
+
+</html>
